@@ -109,3 +109,43 @@ a.btn-header {
   margin-top: 10px;
   font-size: 15px;
 }
+
+a.btn-body {
+  display: flex;
+  float: right;
+  font-size: 13px;
+  display: inline;
+  margin: auto 0;
+}
+
+div.book {
+  display: inline-block;
+  max-width: 75%;
+}
+
+
+/* ============================== form ============================== */
+
+.form-popup {
+  /* display: none; */
+  position: fixed;
+  top: 30%;
+  left: 25%;
+  border: 3px solid #f1f1f1;
+  width: 50%;
+  background-color: white;
+  z-index: 9;
+  padding: 0px 30px;
+}
+
+div.form-group {
+  margin-top: 20px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+button.submit {
+  margin-bottom: 20px;
+}
