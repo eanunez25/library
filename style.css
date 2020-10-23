@@ -126,15 +126,18 @@ div.book {
 
 /* ============================== form ============================== */
 
-.form-popup {
-  /* display: none; */
+#addBookForm {
+  display: none;
   position: fixed;
   top: 30%;
   left: 25%;
-  border: 3px solid #f1f1f1;
+  border: 3px solid lightgray;
   width: 50%;
   background-color: white;
   z-index: 9;
+}
+
+div.padding-30 {
   padding: 0px 30px;
 }
 
@@ -149,3 +152,17 @@ label {
 button.submit {
   margin-bottom: 20px;
 }
+
+i.fa-window-close {
+  float: right;
+  padding-right: 0px;
+}
+
+i.fa-window-close:hover {
+  color: blue;
+}
+
+small {
+  font-size: 15px;
+}
+

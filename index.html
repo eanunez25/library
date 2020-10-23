@@ -17,7 +17,7 @@
       <div class="card first-column">
         <div class="card-header">
           <h1 class="header">Books to Read</h1>
-          <a href="#" class="btn btn-primary btn-sm btn-header">Add book</a>
+          <a href="#" class="btn btn-primary btn-sm btn-header" id="add-book">Add book</a>
         </div>
         <div class="card-body scroll">
           <blockquote class="blockquote mb-0">
@@ -26,7 +26,7 @@
               <p class="author">by Karen Salmansohn</p>
               <p class="genre">Self-help</p>
             </div>
-            <a href="#" class="btn btn-primary btn-sm btn-body">Start</a>
+            <a href="#" class="btn btn-primary btn-sm btn-body" id="start-book">Start</a>
           </blockquote>
           <blockquote class="blockquote mb-0">
             <div class="book">
@@ -34,7 +34,7 @@
               <p class="author">by David Buss</p>
               <p class="genre">Self-help</p>
             </div>
-            <a href="#" class="btn btn-primary btn-sm btn-body">Start</a>
+            <a href="#" class="btn btn-primary btn-sm btn-body" id="start-book">Start</a>
           </blockquote>
         </div>
       </div>
@@ -42,22 +42,35 @@
 
     <!-- ==================== Add a book form ==================== -->
 
-    <div class="form-popup" id="myForm">
-      <form action="index.html" method="post">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" placeholder="Enter book title">
-        </div>
-        <div class="form-group">
-          <label for="author">Author</label>
-          <input type="text" class="form-control" id="author" placeholder="Enter author's name">
-        </div>
-        <div class="form-group">
-          <label for="genre">Genre</label>
-          <input type="text" class="form-control" id="genre" placeholder="Genre">
-        </div>
-        <button type="submit" class="btn btn-primary submit">Submit</button>
-      </form>
+    <div class="form-popup" id="addBookForm">
+      <a href="#" class="btn" id="close-add-book-form"></a><i class="fas fa-window-close fa-2x" id="fa-window-close"></i></a>
+      <div class="padding-30">
+        <form action="index.html" method="post">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Enter book title">
+          </div>
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" class="form-control" id="author" placeholder="Enter author's name">
+          </div>
+          <div class="form-group">
+            <label for="genre">Genre</label>
+            <input type="text" class="form-control" id="genre" placeholder="Genre">
+          </div>
+          <div class="form-group">
+            <label for="author">Pages</label>
+            <input type="number" class="form-control" id="pages" placeholder="Total pages">
+            <small class="form-text text-muted">Not required.</small>
+          </div>
+          <div class="form-group">
+            <label for="genre">Current Page</label>
+            <input type="number" class="form-control" id="current-page" placeholder="What page are you on?">
+            <small class="form-text text-muted">Leave blank if you haven't started it.</small>
+          </div>
+          <button type="submit" class="btn btn-primary submit" id="new-book-submit">Submit</button>
+        </form>
+      </div>
     </div>
 
     <!-- ==================== books currently reading column ==================== -->
@@ -108,9 +121,12 @@
 
   <!-- scrips -->
   <script src="script.js"></script>
+  <!-- bootstrap -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- fa -->
+  <script src="https://kit.fontawesome.com/1a10135acf.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
