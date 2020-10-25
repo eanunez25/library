@@ -63,7 +63,37 @@ let finishedBooks = library.filter(pages => (pages.currentPage == pages.totalPag
 
 // ==================== display categories in columns ====================
 
+// notStartedBooks
+let notStartedBooksColumn = document.getElementById('not-started-books');
 
+notStartedBooks.forEach(function(book) {
+  let blockquote = document.createElement('blockquote');
+  let divBook = document.createElement('div');
+  let title = document.createElement('p');
+  let author = document.createElement('p');
+  let genre = document.createElement('p');
+  let startButton = document.createElement('a');
+
+  blockquote.className = 'blockquote mb-0';
+  divBook.className = 'book';
+  title.className = 'title';
+  author.className = 'author';
+  genre.className = 'genre';
+  startButton.className = 'btn btn-primary btn-sm btn-body';
+  startButton.id = 'start-book';
+
+  startButton.innerHTML = 'Start'
+  title.innerHTML = book.title;
+  author.innerHTML = book.author;
+  genre.innerHTML = book.genre;
+
+  notStartedBooksColumn.appendChild(blockquote);
+  blockquote.appendChild(divBook);
+  divBook.appendChild(title);
+  divBook.appendChild(author);
+  divBook.appendChild(genre);
+  blockquote.appendChild(startButton);
+});
 
 
 // ==================== console log ====================
