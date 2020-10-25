@@ -19,12 +19,14 @@ function openAddBookForm() {
   console.log(localStorage.getItem('books'));
 }
 
+
 // close add book form
 document.getElementById("fa-window-close").addEventListener("click", closeAddBookForm);
 
 function closeAddBookForm() {
   document.getElementById("addBookForm").style.display = 'none';
 }
+
 
 // add book to myLibrary 
 document.getElementById('new-book-submit').addEventListener('click', addBookToLibrary)
@@ -48,6 +50,20 @@ function setMyLibrary() {
     myLibrary = []
   }
 }
+
+
+// ==================== sort myLibrary to three categories ====================
+
+let library = JSON.parse(localStorage.getItem('myLibrary'));
+
+let notStartedBooks = library.filter(pages => (pages.currentPage <= 0));
+let startedBooks = library.filter(pages => (pages.currentPage > 0 && pages.currentPage < pages.totalPages));
+let finishedBooks = library.filter(pages => (pages.currentPage == pages.totalPages && pages.currentPage > 0));
+
+
+// ==================== display categories in columns ====================
+
+
 
 
 // ==================== console log ====================
