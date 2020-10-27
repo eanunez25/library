@@ -56,9 +56,9 @@ function setMyLibrary() {
 
 let library = JSON.parse(localStorage.getItem('myLibrary'));
 
-let notStartedBooks = library.filter(pages => (pages.currentPage <= 0));
-let startedBooks = library.filter(pages => (pages.currentPage > 0 && pages.currentPage < pages.totalPages));
-let finishedBooks = library.filter(pages => (pages.currentPage == pages.totalPages && pages.currentPage > 0));
+let notStartedBooks = library.filter(pages => (parseInt(pages.currentPage) <= 0) || pages.currentPage == "");
+let startedBooks = library.filter(pages => (parseInt(pages.currentPage) > 0 && parseInt(pages.currentPage) < parseInt(pages.totalPages)));
+let finishedBooks = library.filter(pages => (parseInt(pages.currentPage) == parseInt(pages.totalPages) && parseInt(pages.currentPage) > 0));
 
 
 // ==================== display categories in columns ====================
@@ -95,7 +95,45 @@ notStartedBooks.forEach(function(book) {
   blockquote.appendChild(startButton);
 });
 
+// startedBooks
+let startedBooksColumn = document.getElementById('started-books');
+
+startedBooks.forEach(function(book) {
+  let blockquote = document.createElement('blockquote');
+  let divBook = document.createElement('div');
+  let title = document.createElement('p');
+  let author = document.createElement('p');
+  let progress = document.createElement('p');
+  let updateButton = document.createElement('a');
+
+  blockquote.className = 'blockquote mb-0';
+  divBook.className = 'book';
+  title.className = 'title';
+  author.className = 'author';
+  progress.className = 'genre';
+  updateButton.className = 'btn btn-primary btn-sm btn-body';
+  updateButton.id = 'start-book';
+
+  updateButton.innerHTML = 'Update';
+  title.innerHTML = book.title;
+  author.innerHTML = book.author;
+  let pagePercentage = book.currentPage/book.totalPages*100;
+  progress.innerHTML = book.currentPage + '/' + book.totalPages + ' (' + pagePercentage.toFixed(0)  + '%)';
+
+  startedBooksColumn.appendChild(blockquote);
+  blockquote.appendChild(divBook);
+  divBook.appendChild(title);
+  divBook.appendChild(author);
+  divBook.appendChild(progress);
+  blockquote.appendChild(updateButton);
+});
+
+// finishedBooks
+
 
 // ==================== console log ====================
-console.log(JSON.parse(localStorage.getItem('myLibrary')));
+// console.log(JSON.parse(localStorage.getItem('myLibrary')));
+// console.log(notStartedBooks);
+// console.log(startedBooks);
+// console.log(finishedBooks);
 // localStorage.clear();
