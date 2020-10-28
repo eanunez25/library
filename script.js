@@ -63,6 +63,15 @@ let finishedBooks = library.filter(pages => (parseInt(pages.currentPage) == pars
 
 // ==================== display categories in columns ====================
 
+// authorCheck(book)
+function authorCheck(book) {
+  if (book.author == "") {
+    return ""
+  } else {
+    return "by " + book.author
+  }
+}
+
 // notStartedBooks
 let notStartedBooksColumn = document.getElementById('not-started-books');
 
@@ -84,7 +93,7 @@ notStartedBooks.forEach(function(book) {
 
   startButton.innerHTML = 'Start'
   title.innerHTML = book.title;
-  author.innerHTML = book.author;
+  author.innerHTML = authorCheck(book);
   genre.innerHTML = book.genre;
 
   notStartedBooksColumn.appendChild(blockquote);
@@ -116,7 +125,7 @@ startedBooks.forEach(function(book) {
 
   updateButton.innerHTML = 'Update';
   title.innerHTML = book.title;
-  author.innerHTML = book.author;
+  author.innerHTML = authorCheck(book);
   let pagePercentage = book.currentPage/book.totalPages*100;
   progress.innerHTML = book.currentPage + '/' + book.totalPages + ' (' + pagePercentage.toFixed(0)  + '%)';
 
@@ -129,11 +138,28 @@ startedBooks.forEach(function(book) {
 });
 
 // finishedBooks
+let finishedBooksColumn = document.getElementById('finished-books');
 
+finishedBooks.forEach(function(book) {
+  let blockquote = document.createElement('blockquote');
+  let title = document.createElement('p');
+  let author = document.createElement('p');
+
+  blockquote.className = 'blockquote mb-0';
+  title.className = 'title';
+  author.className = 'author';
+
+  title.innerHTML = book.title;
+  author.innerHTML = authorCheck(book);
+
+  finishedBooksColumn.appendChild(blockquote);
+  blockquote.appendChild(title);
+  blockquote.appendChild(author);
+});
 
 // ==================== console log ====================
 // console.log(JSON.parse(localStorage.getItem('myLibrary')));
 // console.log(notStartedBooks);
 // console.log(startedBooks);
-// console.log(finishedBooks);
+console.log(finishedBooks);
 // localStorage.clear();
