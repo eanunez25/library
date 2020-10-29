@@ -16,12 +16,11 @@ document.getElementById("add-book").addEventListener("click", openAddBookForm);
 
 function openAddBookForm() {
   document.getElementById("addBookForm").style.display = 'block';
-  console.log(localStorage.getItem('books'));
 }
 
 
 // close add book form
-document.getElementById("fa-window-close").addEventListener("click", closeAddBookForm);
+document.getElementById("fa-window-close-add").addEventListener("click", closeAddBookForm);
 
 function closeAddBookForm() {
   document.getElementById("addBookForm").style.display = 'none';
@@ -63,7 +62,7 @@ let finishedBooks = library.filter(pages => (parseInt(pages.currentPage) == pars
 
 // ==================== display categories in columns ====================
 
-// authorCheck(book)
+// add 'by' in front of author name if one is given
 function authorCheck(book) {
   if (book.author == "") {
     return ""
@@ -88,7 +87,7 @@ notStartedBooks.forEach(function(book) {
   title.className = 'title';
   author.className = 'author';
   genre.className = 'genre';
-  startButton.className = 'btn btn-primary btn-sm btn-body';
+  startButton.className = 'btn btn-primary btn-sm btn-body start-book';
   startButton.id = 'start-book';
 
   startButton.innerHTML = 'Start'
@@ -120,8 +119,8 @@ startedBooks.forEach(function(book) {
   title.className = 'title';
   author.className = 'author';
   progress.className = 'genre';
-  updateButton.className = 'btn btn-primary btn-sm btn-body';
-  updateButton.id = 'start-book';
+  updateButton.className = 'btn btn-primary btn-sm btn-body update-book';
+  updateButton.id = 'update-book';
 
   updateButton.innerHTML = 'Update';
   title.innerHTML = book.title;
@@ -157,9 +156,34 @@ finishedBooks.forEach(function(book) {
   blockquote.appendChild(author);
 });
 
+
+// ==================== button to start reading book ====================
+
+// start book button
+document.getElementById("start-book").addEventListener("click", openStartBookForm);
+
+function openStartBookForm() {
+  document.getElementById("startBookForm").style.display = 'block';
+}
+
+
+// close add book form
+document.getElementById("fa-window-close-start").addEventListener("click", closeStartBookForm);
+
+function closeStartBookForm() {
+  document.getElementById("startBookForm").style.display = 'none';
+}
+
+
+// update current page
+console.log(notStartedBooks);
+let startButtons = document.getElementsByClassName('start-book');
+console.log(startButtons.length);
+
+
 // ==================== console log ====================
 // console.log(JSON.parse(localStorage.getItem('myLibrary')));
 // console.log(notStartedBooks);
 // console.log(startedBooks);
-console.log(finishedBooks);
+// console.log(finishedBooks);
 // localStorage.clear();

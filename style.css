@@ -123,14 +123,14 @@ div.book {
   max-width: 75%;
 }
 
-a#start-book {
+a#start-book, a#update-book {
   color: white;
 }
 
 
 /* ============================== form ============================== */
 
-#addBookForm {
+#addBookForm, #startBookForm {
   display: none;
   position: fixed;
   top: 30%;

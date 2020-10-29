@@ -28,7 +28,7 @@
     <!-- ==================== Add a book form ==================== -->
 
     <div class="form-popup" id="addBookForm">
-      <a href="#" class="btn" id="close-add-book-form"></a><i class="fas fa-window-close fa-2x" id="fa-window-close"></i></a>
+      <a href="#" class="btn" id="close-add-book-form"></a><i class="fas fa-window-close fa-2x" id="fa-window-close-add"></i></a>
       <div class="padding-30">
         <form action="index.html" method="post">
           <div class="form-group">
@@ -46,7 +46,7 @@
           <div class="form-group">
             <label for="author">Pages</label>
             <input type="number" class="form-control" id="pages" placeholder="Total pages">
-            <small class="form-text text-muted">Not required.</small>
+            <small class="form-text text-muted">Not required, yet</small>
           </div>
           <div class="form-group">
             <label for="genre">Current Page</label>
@@ -57,6 +57,40 @@
         </form>
       </div>
     </div>
+
+
+    <!-- ==================== Start the book form ==================== -->
+
+    <div class="form-popup" id="startBookForm">
+        <a href="#" class="btn" id="close-add-book-form"></a><i class="fas fa-window-close fa-2x" id="fa-window-close-start"></i></a>
+        <div class="padding-30">
+          <form action="index.html" method="post">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title" placeholder="Enter book title">
+            </div>
+            <div class="form-group">
+              <label for="author">Author</label>
+              <input type="text" class="form-control" id="author" placeholder="Enter author's name">
+            </div>
+            <div class="form-group">
+              <label for="genre">Genre</label>
+              <input type="text" class="form-control" id="genre" placeholder="Genre">
+            </div>
+            <div class="form-group">
+              <label for="author">Pages</label>
+              <input type="number" class="form-control" id="pages" placeholder="Total pages">
+              <small class="form-text text-muted">Required</small>
+            </div>
+            <div class="form-group">
+              <label for="genre">Current Page</label>
+              <input type="number" class="form-control" id="current-page" placeholder="What page are you on?">
+              <small class="form-text text-muted">Required</small>
+            </div>
+            <button type="submit" class="btn btn-primary submit" id="start-book-submit">Submit</button>
+          </form>
+        </div>
+      </div>
 
     <!-- ==================== books currently reading column ==================== -->
 
