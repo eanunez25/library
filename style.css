@@ -123,8 +123,8 @@ div.book {
   max-width: 75%;
 }
 
-a#start-book, a#update-book {
-  color: white;
+a[id^="start-book"], a#update-book {
+  color: white !important;
 }
 
 

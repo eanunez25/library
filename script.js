@@ -1,11 +1,12 @@
 let myLibrary = [];
 
-function Book(title, author, totalPages, genre, currentPage) {
+function Book(title, author, totalPages, genre, currentPage, id) {
   this.title = title;
   this.author = author;
   this.totalPages = totalPages;
   this.genre = genre;
   this.currentPage = currentPage;
+  this.id = id;
 }
 
 
@@ -36,7 +37,8 @@ function addBookToLibrary() {
   let genre = document.getElementById('genre').value;
   let totalPages = document.getElementById("pages").value;
   let currentPage = document.getElementById("current-page").value; 
-  let book = new Book(title, author, totalPages, genre, currentPage);
+  let id = setId();
+  let book = new Book(title, author, totalPages, genre, currentPage, id);
   setMyLibrary();
   myLibrary.push(book);
   localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
@@ -50,9 +52,17 @@ function setMyLibrary() {
   }
 }
 
+function setId() {
+  let library = JSON.parse(localStorage.getItem('myLibrary'));
+  if (library == null) {
+    return 0
+  } else {
+    return library.length;
+  }
+}
+
 
 // ==================== sort myLibrary to three categories ====================
-
 let library = JSON.parse(localStorage.getItem('myLibrary'));
 
 let notStartedBooks = library.filter(pages => (parseInt(pages.currentPage) <= 0) || pages.currentPage == "");
@@ -88,7 +98,7 @@ notStartedBooks.forEach(function(book) {
   author.className = 'author';
   genre.className = 'genre';
   startButton.className = 'btn btn-primary btn-sm btn-body start-book';
-  startButton.id = 'start-book';
+  startButton.id = 'start-book' + book.id;
 
   startButton.innerHTML = 'Start'
   title.innerHTML = book.title;
@@ -160,12 +170,11 @@ finishedBooks.forEach(function(book) {
 // ==================== button to start reading book ====================
 
 // start book button
-document.getElementById("start-book").addEventListener("click", openStartBookForm);
+// document.getElementsByClassName("start-book").addEventListener("click", openStartBookForm);
 
-function openStartBookForm() {
-  document.getElementById("startBookForm").style.display = 'block';
-}
-
+// function openStartBookForm() {
+//   document.getElementById("startBookForm").style.display = 'block';
+// }
 
 // close add book form
 document.getElementById("fa-window-close-start").addEventListener("click", closeStartBookForm);
@@ -174,15 +183,11 @@ function closeStartBookForm() {
   document.getElementById("startBookForm").style.display = 'none';
 }
 
-
-// update current page
-console.log(notStartedBooks);
-let startButtons = document.getElementsByClassName('start-book');
-console.log(startButtons.length);
+// event listener to find out which button was pressed
 
 
 // ==================== console log ====================
-// console.log(JSON.parse(localStorage.getItem('myLibrary')));
+console.log(JSON.parse(localStorage.getItem('myLibrary')));
 // console.log(notStartedBooks);
 // console.log(startedBooks);
 // console.log(finishedBooks);
