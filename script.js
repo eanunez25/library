@@ -111,6 +111,99 @@ notStartedBooks.forEach(function(book) {
   divBook.appendChild(author);
   divBook.appendChild(genre);
   blockquote.appendChild(startButton);
+
+  // open form to type in current page and total pages to start book
+  startButton.addEventListener('click', startBookForm);
+
+  function startBookForm() {
+    let divStartBookForm = document.createElement('div');
+    divStartBookForm.id = 'startBookForm';
+    divBook.className = 'form-popup'
+
+    let divPadding30 = document.createElement('div');
+    divPadding30.className = 'padding-30';
+
+    let form = document.createElement('form');
+    form.action = 'index.html';
+    form.method = 'post';
+
+    let title = document.createElement('label');
+    title.innerHTML = book.title;
+
+    let author = document.createElement('p');
+    author.innerHTML = book.author;
+
+    let genre = document.createElement('p');
+    genre.innerHTML = book.genre;
+
+    let formGroupPages = document.createElement('div');
+    formGroupPages.className = 'form-group';
+
+    let labelPages = document.createElement('label');
+    labelPages.htmlFor = 'pages';
+    labelPages.innerHTML = 'Pages';
+
+    let inputPages = document.createElement('input')
+    inputPages.type = 'number';
+    inputPages.className = 'form-control';
+    inputPages.id = 'pages'; 
+    inputPages.placeholder = 'Total pages'
+    inputPages.value = book.totalPages;
+
+    let mutePages = document.createElement('small');
+    mutePages.className = 'form-text text-muted';
+    mutePages.innerHTML = 'Required'; 
+
+    let formGroupCurrentPage = document.createElement('div')
+    formGroupCurrentPage.className = 'form-group';
+
+    let labelCurrentPage = document.createElement('label');
+    labelCurrentPage.innerHTML = 'Current Page';
+    labelCurrentPage.htmlFor = 'current-page';
+
+    let inputCurrentPage = document.createElement('input');
+    inputCurrentPage.type = 'number';
+    inputCurrentPage.className = 'form-control';
+    inputCurrentPage.id = 'current-page';
+    inputCurrentPage.placeholder = 'What page are you on?';
+
+    let smallCurrentPage = document.createElement('small');
+    smallCurrentPage.className = 'form-text text-muted';
+    smallCurrentPage.innerHTML = 'Required';
+
+    let buttonStartBook = document.createElement('button');
+    buttonStartBook.type = 'submit';
+    buttonStartBook.className = 'btn btn-primary submit';
+    buttonStartBook.id = 'start-book-submit';
+    buttonStartBook.innerHTML = 'Submit';
+
+    let closeButton = document.createElement('a');
+    closeButton.className = 'btn float-right';
+    
+    let iCloseButton = document.createElement('i');
+    iCloseButton.className = 'fas fa-window-close fa-2x';
+
+    document.body.appendChild(divStartBookForm);
+    divStartBookForm.appendChild(closeButton);
+    closeButton.appendChild(iCloseButton);
+    divStartBookForm.appendChild(divPadding30);
+    divPadding30.appendChild(form);
+    form.appendChild(title);
+    form.appendChild(author);
+    form.appendChild(genre);
+    form.appendChild(formGroupPages);
+    formGroupPages.appendChild(labelPages);
+    formGroupPages.appendChild(inputPages);
+    formGroupPages.appendChild(mutePages);
+    form.appendChild(formGroupCurrentPage);
+    formGroupCurrentPage.appendChild(labelCurrentPage);
+    formGroupCurrentPage.appendChild(inputCurrentPage);
+    formGroupCurrentPage.appendChild(smallCurrentPage);
+    form.appendChild(buttonStartBook);
+
+    document.getElementById('startBookForm').style.display = 'block';
+
+  }
 });
 
 // startedBooks
@@ -177,13 +270,14 @@ finishedBooks.forEach(function(book) {
 // }
 
 // close add book form
-document.getElementById("fa-window-close-start").addEventListener("click", closeStartBookForm);
+// document.getElementById("fa-window-close-start").addEventListener("click", closeStartBookForm);
 
-function closeStartBookForm() {
-  document.getElementById("startBookForm").style.display = 'none';
-}
+// function closeStartBookForm() {
+//   document.getElementById("startBookForm").style.display = 'none';
+// }
 
 // event listener to find out which button was pressed
+
 
 
 // ==================== console log ====================

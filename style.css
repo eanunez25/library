@@ -170,3 +170,7 @@ small {
   font-size: 15px;
 }
 
+a#close-add-book-form, a.float-right {
+  float: right;
+}
+
